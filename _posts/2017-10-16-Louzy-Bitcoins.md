@@ -7,6 +7,8 @@ title: Lousy Bitcoins
 
 I recently started digging deeper into the whole bitcoin/blockchain world. While reading the very good book [Mastering Bitcoins](https://www.bitcoinbook.info/) (BTW, here's the github repo for the [second edition](https://github.com/bitcoinbook/bitcoinbook)), I learnt the specifics of how bitcoin addresses and keys work. The generation process is made up of solid cryptographic building blocks, but if not carried out "right", there are possibilities for people to take over your bitcoin wallet.
 
+<!--more-->
+
 ## The Theory
 
 Everything starts with your private key, the one needed to spend your bitcoins. The private key is essentially a large number . A number that nobody could easily guess, ideally generated from a good source of randomness. Here's a sample of a private key in hex:
