@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Lousy Bitcoins
+categories: [Bitcoin, Python, Cryptography]
 ---
 
 #### Cracking bitcoins private keys generated from weak passphrases.
