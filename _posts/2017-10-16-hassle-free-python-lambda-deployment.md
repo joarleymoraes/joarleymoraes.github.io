@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Hassle-Free Python Lambda Deployment
-categories: [AWS, AWS_Lambda, Python, Shell_Script, Backend]
+categories: [AWS, AWS_Lambda, Python, Shell_Script, Backend, Serverless]
 ---
 
 #### Tutorial + Script

@@ -10,7 +10,7 @@ permalink: /about/
 Hello! My name is Joarley Moraes and I live in Brazil. During the day, I work as full time freelancer as Backend Developer for several clients, across different and interesting projects. On my free time, I work on my side projects, play soccer, drink coffee (and beer), watch the [Palmeiras](http://www.palmeiras.com.br/capas/palmeiras/), and hang with my friends and family :heart_eyes: . I'm also father of Victor and Sofia. Graduated college ([UFPa/Brazil](https://portal.ufpa.br/)) with a degree in Computer Engineering, part of which took place in [LTU/Sweden](https://www.ltu.se/?l=en)
 
 
-I archictect and implement backend systems for the web. I'm an expert on **Python**, **serverless** and **AWS** technologie.I'm fascinated by simple solutions. I enjoy building software products that users want. Forgive me, but I will always want to know the **`Why`**.
+I archictect and implement backend systems for the web. I'm an expert on **Python**, **serverless** and **AWS** technologies. I'm fascinated by simple solutions. I enjoy building software products that users want. Forgive me, but I will always want to know the **`Why`**.
  
 ### SIDE PROJECTS
 
