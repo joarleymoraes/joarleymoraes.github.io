@@ -6,7 +6,7 @@ categories: [Bitcoin, Python, Cryptography]
 
 #### Cracking bitcoins private keys generated from weak passphrases.
 
-I recently started digging deeper into the whole bitcoin/blockchain world. While reading the very good book [Mastering Bitcoins](https://www.bitcoinbook.info/) (BTW, here's the github repo for the [second edition](https://github.com/bitcoinbook/bitcoinbook)), I learnt the specifics of how bitcoin addresses and keys work. The generation process is made up of solid cryptographic building blocks, but if not carried out "right", there are possibilities for people to take over your bitcoin wallet.
+I recently started digging deeper into the whole bitcoin/blockchain world. While reading the very good book [Mastering Bitcoins](http://amzn.to/2hp4uD0), I learnt the specifics of how bitcoin addresses and keys work. The generation process is made up of solid cryptographic building blocks, but if not carried out "right", there are possibilities for people to take over your bitcoin wallet.
 
 <!--more-->
 

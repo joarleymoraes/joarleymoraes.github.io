@@ -31,7 +31,7 @@ On the AWS side, you will need to have created:
 - An IAM user (with programmatic access)
 - The Lambda function
 
-It's assumed you are familiar with the basics of AWS Lambda, S3 and IAM. This tutorial won't cover that part.
+It's assumed you are familiar with the basics of AWS Lambda, S3 and IAM. This tutorial won't cover that part. If you are begginer and need help with that, you can Google or check out this [great introductory book](http://amzn.to/2hrotRP)
 
 ## Step 1: Set Up the (Virtual) Environment
 
