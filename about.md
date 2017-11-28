@@ -14,7 +14,7 @@ I archictect and implement backend systems for the web. I'm an expert on **Pytho
  
 ### SIDE PROJECTS
 
-I'm now working on a few different projects on my spare time. [99Serverless](http://99serverless.com/) [NameLabs](http://namelabs.strikingly.com/) helps founders to select the best domain, company or product name. [Tapdiem](http://namelabs.strikingly.com/) is mobile app publishing company, focused on games. [AppDealsToday](https://twitter.com/appdeals2day) helps users to find the best daily deals and apps gone FREE.
+I'm now working on a few different projects on my spare time. [99Serverless](http://99serverless.com/) is a blog about all things serverless. [NameLabs](http://namelabs.strikingly.com/) helps founders to select the best domain, company or product name. [Tapdiem](http://namelabs.strikingly.com/) is mobile app publishing company, focused on games. [AppDealsToday](https://twitter.com/appdeals2day) helps users to find the best daily deals and apps gone FREE.
 
 ### EXPERIENCE/CLIENTS
 
