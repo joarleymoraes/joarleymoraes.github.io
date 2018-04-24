@@ -4,7 +4,7 @@ title: Building A Serverless Image Processing SaaS
 categories: [API_Gateway, AWS, Flask, AWS_Lambda, Python, SaaS, Serverless, Zappa]
 ---
 
-[http://www.99serverless.com/wp-content/uploads/2017/11/architecture.png](http://www.99serverless.com/wp-content/uploads/2017/11/architecture.png)
+![http://www.99serverless.com/wp-content/uploads/2017/11/architecture.png](http://www.99serverless.com/wp-content/uploads/2017/11/architecture.png)
 
 
 If you google “Image Processing SaaS” you will find many image processing services. Some of them you might have already used, or at least heard of, such as Imgix, Bitline, Cloudinary, etc. [Here’s a more comprehensive list](https://gist.github.com/cheeaun/6385645). In this tutorial, I will share with you how you can build your own and serverless service, using AWS and [Zappa](https://github.com/Miserlou/Zappa). So I’m happy to announce **imgy**, a tiny image processing service we will be building in this tutorial. 😀
@@ -135,6 +135,9 @@ def image_transform(filename, ops):
     return output
 {% endhighlight %}
 
+
+
+{% gist afa74580ecad1b31b773e0624482518e %}
 
 https://gist.githubusercontent.com/joarleymoraes/afa74580ecad1b31b773e0624482518e/raw/557a5ad19f22f619ccd3d7bd990863f10caa49cd/app.py
 
