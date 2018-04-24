@@ -7,7 +7,7 @@ permalink: /about/
 
 ### SUMMARY
 
-Hello! My name is Joarley Moraes and I live in Brazil. During the day, I work as full time freelancer as Backend Developer for several clients, across different and interesting projects. On my free time, I work on my side projects, play soccer, drink coffee (and beer), watch the [Palmeiras](http://www.palmeiras.com.br/home/), and hang with my friends and family :heart_eyes: . I'm also father of Victor and Sofia. Graduated college ([UFPa/Brazil](https://portal.ufpa.br/)) with a degree in Computer Engineering, part of which took place in [LTU/Sweden](https://www.ltu.se/?l=en)
+Hello! My name is Joarley Moraes and I live in Brazil. During the day, I work as full time Backend Developer for several clients, across different and interesting projects. On my free time, I work on my side projects, play soccer, drink coffee (and beer), watch the [Palmeiras](http://www.palmeiras.com.br/home/), and hang with my friends and family :heart_eyes: . I'm also father of Victor and Sofia. Graduated college ([UFPa/Brazil](https://portal.ufpa.br/)) with a degree in Computer Engineering, part of which took place in [LTU/Sweden](https://www.ltu.se/?l=en)
 
 
 I architect and implement backend systems for the web. I'm an expert on **Python**, **serverless** and **AWS** technologies. I'm fascinated by simple solutions. I enjoy building software products that users want. Forgive me, but I will always want to know the **`Why`**.
@@ -55,6 +55,11 @@ Product Manager
 ### SIDE PROJECTS
 
 I'm now working on a few different projects on my spare time. [99Serverless](http://99serverless.com/) is a blog about all things serverless. [NameLabs](http://namelabs.strikingly.com/) helps founders to select the best domain, company or product name. [Tapdiem](http://namelabs.strikingly.com/) is mobile app publishing company, focused on games. [AppDealsToday](https://twitter.com/appdeals2day) helps users to find the best daily deals and apps gone FREE.
+
+
+### HIRE ME
+
+At Upwork: [https://www.upwork.com/fl/joarleymoraes](https://www.upwork.com/fl/joarleymoraes)
 
 ### CONTACT
 
