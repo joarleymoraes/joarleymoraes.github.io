@@ -33,12 +33,20 @@ A CLI tool to make AWS Lambda deployments less painful
 
 ### PREVIOUS CLIENTS
 
+#### WebProof
+Python Backend Developer
+
+
+#### HopLabs
+Python Backend Developer
+
+
 #### NetSecurity
 Python Backend Developer
 
 ---------
 
-#### caffeine.tv
+#### ExpressVPN
 Python Backend Developer
 
 ---------
