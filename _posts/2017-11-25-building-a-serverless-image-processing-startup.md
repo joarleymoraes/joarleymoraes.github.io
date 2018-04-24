@@ -73,75 +73,113 @@ The full code for **imgy** is available [HERE](https://github.com/joarleymoraes/
 
 This is coded in Flask, which does most of the heavy lifting for us in terms of HTTP handling. So we are basically downloading the source image (given by `s3_key`) from S3, then applying all specified operations (`ops`) coming from the query string. After that, we convert the image to binary and attach it to the HTTP response via `send_file` helper from Flask. Got part of that snippet from [here](https://blog.zappa.io/posts/serving-binary-data-through-aws-api-gateway-automatically-with-zappa).
 
-
-{% highlight python %}
-@app.route('/<s3_key>', methods=['GET'])
-def transform(s3_key):
-    ops = request.args.to_dict()
-
-    img_filename = s3.download(BUCKET, s3_key)
-
-    if img_filename:
-        output_img = image_transform(img_filename, ops)
-    else:
-        abort(404)
-
-    with open(output_img, 'rb') as fp:
-        mime_type = get_mime_type(output_img)
-        return send_file(
-                    io.BytesIO(fp.read()),
-                    attachment_filename=output_img,
-                    mimetype=mime_type
-               )
-{% endhighlight %}
+{% gist 600564bc497cf11a6d8e4c153ea8303f %}
 
 ## Wand for the Win
 
 Below you can see the image modification part using Wand. This code can be easily extended to include more operations, as you can stack up new image modifiers. Notice they are independent of each other, that’s how ImageMagick is designed.
 
-{% highlight python %}
-@app.route('/<s3_key>', methods=['GET'])
-def image_transform(filename, ops):
-    
-    (...)
-
-    with Image(filename=filename) as src:
-        with src.clone() as img:
-            if 'w' in ops and 'h' in ops:
-                w, h = int(ops['w']), int(ops['h']),
-                img.resize(w, h)
-            elif 'w' in ops:
-                w, h = int(ops['w']), img.height,
-                img.resize(w, h)
-            elif 'h' in ops:
-                w, h = img.width, int(ops['h']),
-                img.resize(w, h)
-
-            if 'fm' in ops:
-                ext = ops['fm']
-                img.format = ext
-            
-            if is_lossy(ext, ops):
-                if 'q' in ops:
-                    q = int(ops['q'])
-                else:
-                    q = DEFAULT_QUALITY_RATE
-
-                img.compression_quality = q
-
-            img.save(filename=output)
-
-
-    return output
-{% endhighlight %}
-
-
 
 {% gist afa74580ecad1b31b773e0624482518e %}
 
-https://gist.githubusercontent.com/joarleymoraes/afa74580ecad1b31b773e0624482518e/raw/557a5ad19f22f619ccd3d7bd990863f10caa49cd/app.py
+
+## Supported Transformations
+
+All transformations below are currently supported and they can be applied independently of each other:
+
+- `w`: sets image width
+- `h`: sets image height
+- `fm`: sets image format, e.g.: png, jpeg, etc. All supported by ImageMagick.
+- `q`: sets compression quality, in case it’s lossy format. Value must be between 1 to 100.
+
+## Binary Response
+
+Until recently, it was very clumsy to support binary responses in API Gateway; and this is key to make our solution to work. Hopefully, [AWS improved the support last year](https://aws.amazon.com/about-aws/whats-new/2016/11/binary-data-now-supported-by-api-gateway/)  and it’s much simpler to integrate 👏 👏. Zappa took advantage of this and added binary support on its version 0.36.0.
+
+## Caching
+
+Now, let’s add the necessary headers to our response so that CloudFront is able to cache images. First, we will use the decorator `@app.after_request` on all responses. Then we need to tell to the CloudFront that they should cache the images for `CACHE_MAX_AGE` seconds. Finally we set the cache as `public`, rather than private. That’s it, we are all set for caching.
 
 
-![https://gist.githubusercontent.com/joarleymoraes/afa74580ecad1b31b773e0624482518e/raw/557a5ad19f22f619ccd3d7bd990863f10caa49cd/app.py](https://gist.githubusercontent.com/joarleymoraes/afa74580ecad1b31b773e0624482518e/raw/557a5ad19f22f619ccd3d7bd990863f10caa49cd/app.py)
+{% gist 05b1783e65f3f5487441ff39dc4010e4 %}
+
+
+You are able to verify this is working when you see a header in the response that is set as `x-cache: Hit from cloudfront`, instead of `x-cache: Miss from cloudfront`. Plus you can check the Lambda function logs and you will notice the function is not invoked after caching.
+
+
+## CORS
+
+One important feature imgy should have is the ability to support CORS (Cross-Origin Resource Sharing) requests. Meaning, we want to let incoming requests from an external domain. For example, if we were to embed the following image in a HTML, it would not work if CORS was disabled.
+
+
+{% gist b9f176fbae6e94236a101cb6e9766e62 %}
+
+CORS support is achieved by simply adding `flask-cors` extension.
+
+
+Let’s Deploy
+Configure first your environment. At zappa_settings.py you SHALL change:
+
+- `s3_bucket`: the S3 bucket where we will store our (zappa) deployment packages. You don’t need to create in AWS, Zappa will do it for you.
+NOTE: make sure the default AWS CLI profile has ADMIN permission.
+
+You MAY also configure:
+
+`aws_region`: the AWS region to where you want to deploy the app
+At `imgy/settings.py` you SHALL change:
+
+`imgy_bucket`: the S3 bucket from where we will get input images.
+You MAY also configure:
+
+`imgy_cache_max_age`: Define the cache Control header max-age in seconds.
+To install let’s perform some commands:
+
+
+```
+virtualenv -p python3.6 venv
+source venv/bin/activate
+pip install -r requirements.txt
+deploy zappa
+```
+
+## Adding CloudFront (optional)
+
+You may add a custom CloudFront distribution, which will add a caching layer to your service. Be aware that this step will take about 15-20 minutes to finish. At the end the CloudFront URL will be generated, and use that instead of the API Gateways’.
+
+`./add_cloud_front.sh <api_id>`
+
+
+E.g.: If the API Gateway URL is `https://vk05slewjg.execute-api.us-west-2.amazonaws.com/api`, then your id is `vk05slewjg`.
+
+NOTE: you might need to update awscli to latest version: `sudo pip install awscli --upgrade --user`. Install in you OS environment, not in the virtualenv.
+
+
+## UnDeploy
+To remove all AWS components created:
+
+```
+./remove_cloud_front.sh
+undeploy zappa
+```
+
+
+## Live Demo
+API Gateway URL:
+
+[https://vk05slewjg.execute-api.us-west-2.amazonaws.com/api/cloud.png?w=100&h=100&fm=jpg&q=50](https://vk05slewjg.execute-api.us-west-2.amazonaws.com/api/cloud.png?w=100&h=100&fm=jpg&q=50)
+
+CloudFront URL:
+
+[https://d3htvglddphhs8.cloudfront.net/cloud.png?w=100&h=100&fm=jpg&q=50](https://d3htvglddphhs8.cloudfront.net/cloud.png?w=100&h=100&fm=jpg&q=50)
+
+## That’s It
+Post your comments below if you run into any issues or have questions.
+
+Liked it ? Share this with your friends.
+
+
+
+
+
 
 
