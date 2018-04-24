@@ -94,3 +94,51 @@ def transform(s3_key):
                     mimetype=mime_type
                )
 {% endhighlight %}
+
+## Wand for the Win
+
+Below you can see the image modification part using Wand. This code can be easily extended to include more operations, as you can stack up new image modifiers. Notice they are independent of each other, that’s how ImageMagick is designed.
+
+{% highlight python %}
+@app.route('/<s3_key>', methods=['GET'])
+def image_transform(filename, ops):
+    
+    (...)
+
+    with Image(filename=filename) as src:
+        with src.clone() as img:
+            if 'w' in ops and 'h' in ops:
+                w, h = int(ops['w']), int(ops['h']),
+                img.resize(w, h)
+            elif 'w' in ops:
+                w, h = int(ops['w']), img.height,
+                img.resize(w, h)
+            elif 'h' in ops:
+                w, h = img.width, int(ops['h']),
+                img.resize(w, h)
+
+            if 'fm' in ops:
+                ext = ops['fm']
+                img.format = ext
+            
+            if is_lossy(ext, ops):
+                if 'q' in ops:
+                    q = int(ops['q'])
+                else:
+                    q = DEFAULT_QUALITY_RATE
+
+                img.compression_quality = q
+
+            img.save(filename=output)
+
+
+    return output
+{% endhighlight %}
+
+
+https://gist.githubusercontent.com/joarleymoraes/afa74580ecad1b31b773e0624482518e/raw/557a5ad19f22f619ccd3d7bd990863f10caa49cd/app.py
+
+
+![https://gist.githubusercontent.com/joarleymoraes/afa74580ecad1b31b773e0624482518e/raw/557a5ad19f22f619ccd3d7bd990863f10caa49cd/app.py](https://gist.githubusercontent.com/joarleymoraes/afa74580ecad1b31b773e0624482518e/raw/557a5ad19f22f619ccd3d7bd990863f10caa49cd/app.py)
+
+
