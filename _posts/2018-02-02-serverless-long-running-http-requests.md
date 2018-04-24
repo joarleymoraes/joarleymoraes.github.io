@@ -1,8 +1,10 @@
 ---
 layout: post
-title: Pattern: Serverless Long Running HTTP Requests in AWS
+title: Pattern, Serverless Long Running HTTP Requests in AWS
 categories: [API_Gateway, AWS, HTTP, AWS_Lambda, Serverless]
 ---
+
+![http://www.99serverless.com/wp-content/uploads/2017/11/Serverless-Application-Architecture.png](http://www.99serverless.com/wp-content/uploads/2017/11/Serverless-Application-Architecture.png)
 
 
 The serverless way to deploy web applications in AWS usually involves hooking up API Gateway with Lambda. If you done this, chances are you have ran into a built-in constraint: `the timeout`. These products are designed to run microservices, which are expected to be micro, duration-wise as well 😆. However, there are some use cases for which our web app needs to handle long runnings tasks. In this article, I will share with you an HTTP pattern to accomplish that while still being serverless.
