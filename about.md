@@ -7,10 +7,10 @@ permalink: /about/
 
 ### SUMMARY
 
-Hello! My name is Joarley Moraes and I live in Brazil. During the day, I work as full time Backend Developer for several clients, across different and interesting projects. On my free time, I work on my side projects, play soccer, drink coffee (and beer), watch the [Palmeiras](http://www.palmeiras.com.br/home/), and hang with my friends and family :heart_eyes: . I'm also father of Victor and Sofia. Graduated college ([UFPa/Brazil](https://portal.ufpa.br/)) with a degree in Computer Engineering, part of which took place in [LTU/Sweden](https://www.ltu.se/?l=en)
+Hello! My name is Joarley Moraes and I live in Brazil. During the day, I work as full time Backend Developer, across different and interesting projects. On my free time, I work on my side projects, play soccer, drink coffee (and beer), watch the [Palmeiras](http://www.palmeiras.com.br/home/), and hang with my friends and family. Graduated college ([UFPa/Brazil](https://portal.ufpa.br/)) with a degree in Computer Engineering, part of which took place in [LTU/Sweden](https://www.ltu.se/?l=en)
 
 
-I architect and implement backend systems for the web. I'm an expert on **Python**, **serverless** and **AWS** technologies. I'm fascinated by simple solutions. I enjoy building software products that users want. Forgive me, but I will always want to know the **`Why`**.
+I design and implement backend systems for the web. I'm an expert on **Python**, **serverless**, **microservices** and **AWS**. I'm fascinated by simple solutions. I enjoy building software products that users want. Forgive me, but I will always want to know the **`Why`**.
 
 ### OPEN SOURCE PROJECTS
 
@@ -29,35 +29,6 @@ My ongoing Python implementation of the cryptopals challenges
 #### [lambda_deploy](https://github.com/joarleymoraes/aws_lambda_deploy)
 
 A CLI tool to make AWS Lambda deployments less painful
-
-
-### PREVIOUS CLIENTS
-
-#### WebProof
-Python Backend Developer
-
-
-#### HopLabs
-Python Backend Developer
-
-
-#### NetSecurity
-Python Backend Developer
-
----------
-
-#### ExpressVPN
-Python Backend Developer
-
----------
-
-#### Versitrax
-Python Backend Developer
-
----------
-
-#### HESS Cash Systems
-Product Manager
 
 
 ### SIDE PROJECTS
